@@ -17,6 +17,7 @@ jobs:
         run: |
           pytest tests
   run-docker-build:
+    needs: run-unit-tests
     runs-on: self-hosted
     steps:
     - name: "Checkout current branch"
