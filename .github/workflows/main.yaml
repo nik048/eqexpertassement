@@ -8,8 +8,11 @@ jobs:
   run-unit-tests:
     runs-on: self-hosted
     steps:
+      - name: "Checkout current branch"
+        uses: actions/checkout@v4
       - run: |
-          pip install -r requirements.txt
-      - run: |
+          pip install -r requirements.txt 
+      - name: "Run unit tests"
+        run: |
           pytest tests
 
