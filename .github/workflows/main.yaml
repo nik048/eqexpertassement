@@ -1,5 +1,6 @@
 # tests-ut
 # build-docker
+# publish artifacts(pkg, images)
 
 name: gist-python-app
 #runs-on: self-hosted
@@ -15,4 +16,11 @@ jobs:
       - name: "Run unit tests"
         run: |
           pytest tests
+    run-docker-build:
+      runs-on: self-hosted
+      steps:
+      - name: "Checkout current branch"
+        uses: actions/checkout@v4
+      - run: |
+          docker build -t gits-app:${GITHUB_RUN_ID} .
 
